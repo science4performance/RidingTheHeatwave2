@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-B2ootaw-.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-CxL0S8W7.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-D9fedIX3.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-BTCkDNvf.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-DU3aDxX5.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-CLVRCuM9.ttf" as="font" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>HeatOfTheMoment</title>
+    <script type="module" crossorigin src="./assets/index-CXWNxYPw.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-WDmkW-6F.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-XTZdWHwa.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-QczY1yfQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-BMXqdHZ5.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-BZDtXk6t.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-B4_2-8Ho.js">
+    <link rel="modulepreload" crossorigin href="./assets/Combination-DIF6wDxT.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-CGw3WJH5.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-f3ruLt4G.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-QU91GQzu.js">
+    <link rel="modulepreload" crossorigin href="./assets/hotkeys-sK-kaEBC.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-BtVgadIf.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DTKIwXcy.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-C9QGcv--.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-Pczj-rmu.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-Dre1F6mo.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-Z_hg0zTh.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-Cn1LhTdd.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-DL4QHRL7.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-DEUNsdbK.js">
+    <link rel="modulepreload" crossorigin href="./assets/_Uint8Array-BGESiCQL.js">
+    <link rel="modulepreload" crossorigin href="./assets/_getTag-BWqNuuwU.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseIsEqual-C8v2yRqO.js">
+    <link rel="modulepreload" crossorigin href="./assets/jotai-D74Ef_p1.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-EWlZS5z8.js">
+    <link rel="modulepreload" crossorigin href="./assets/isArrayLikeObject-BkJc8lDE.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-DVX6Ez37.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-BBqism5D.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-Clm_pCuX.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-CMMs4cl8.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-DF3Ybce_.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-J43JkZRd.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BGkTcW3U.js">
+    <link rel="modulepreload" crossorigin href="./assets/toString-DlRqgfqz.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSlice-CskhCEVH.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasUnicode-BC4vb_bF.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-bYJVBwo9.js">
+    <link rel="modulepreload" crossorigin href="./assets/capitalize-HqFs_OK0.js">
+    <link rel="modulepreload" crossorigin href="./assets/ai-model-dropdown-BiaBgfSy.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-DjEl44tW.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-CTk3v2Fk.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-O0mPFSN0.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-cELqHKYi.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-ljv4_QXT.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-DFgsIVBI.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-DUZWfqOX.js">
+    <link rel="modulepreload" crossorigin href="./assets/connection-DZfQ0nfK.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-BPtPhVM4.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-DPEuN0Kv.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-uDMmKGBt.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-hQAzR0Cy.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-a5AhnPua.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BWV-5FQQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BRKC9vDH.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-C2lGLtUJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DjRxw7g7.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BFZNB01C.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CiIxDFsH.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-AYL4p4Dn.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-BQjjdb1n.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-VdEqhsWH.js">
+    <link rel="modulepreload" crossorigin href="./assets/_arrayReduce-BPS6ICyD.js">
+    <link rel="modulepreload" crossorigin href="./assets/type-Bx7IFbhF.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseProperty-Bl8lQyHQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/toNumber-GB_lFVaq.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-DBnXnRPe.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-BzCP2SOK.js">
+    <link rel="modulepreload" crossorigin href="./assets/toInteger-Cl1doThW.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-B1nOh376.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-XWXpgwpH.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-BGS9frER.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-CF5R2n1d.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-bc5jSpSz.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeleteCell-D5AVSLUE.js">
+    <link rel="modulepreload" crossorigin href="./assets/lazy-ShQ0UXOI.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-9ao8Dcla.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-BdwMj645.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-Bu1vZnwX.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-DUgPL0IU.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-tPIJZni7.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-Xx3vyups.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-CYJZg0vV.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-C-S4uQH4.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-Dz48GAub.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-BWXaNlZC.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-DrIPqn2D.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-C5uPODSj.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-C1aNc7b4.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-CuSksPzr.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-fjIzfaON.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-DD50EU1G.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-D4ddCDwe.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-BP5lLEUu.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-9tVC0887.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-BUWnJ0Ly.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-CBrjDxLd.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-CL0ql7QN.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-CGmj_xHa.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-DyWZDAiU.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-cyqSIlb0.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CSuUnJvL.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-BLLpcsff.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-CmnWYkoH.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-Ds9oEET1.js">
+    <link rel="modulepreload" crossorigin href="./assets/mode-OgOLIWqz.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-B1k9qoU6.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-CDZ5aEc_.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-NPSY8_Zm.js">
+    <link rel="modulepreload" crossorigin href="./assets/tabs-CWZFOtfb.js">
+    <link rel="modulepreload" crossorigin href="./assets/add-missing-import-CtAvQzRq.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-CWTnKpYp.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-DeznJSW5.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-LOVWlBJF.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-BVpxvuDQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-C_m3CfBz.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-DNzypnwR.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-DZkKelDe.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-CB2nX3F0.js">
+    <link rel="modulepreload" crossorigin href="./assets/maps-CcaFd04c.js">
+    <link rel="modulepreload" crossorigin href="./assets/shim-DZsTM49a.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-Yhx6Ym5-.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-r-9mmG40.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-CvS1dbIX.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-BQepJAoC.js">
+    <link rel="modulepreload" crossorigin href="./assets/katex-BWHK7JiN.js">
+    <link rel="modulepreload" crossorigin href="./assets/marked.esm-D2gFq9fv.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-T7OEMACY-DmsJ7oRM.js">
+    <link rel="modulepreload" crossorigin href="./assets/range-CWPLRnRw.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-BqDahwx2.js">
+    <link rel="modulepreload" crossorigin href="./assets/Output-DaxqEvBr.js">
+    <link rel="modulepreload" crossorigin href="./assets/name-cell-input-Czy9kSf0.js">
+    <link rel="modulepreload" crossorigin href="./assets/useHotkey-fEzjOJm_.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-C90uzGgn.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CXTCcHAx.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-yuFtFIvU.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-FxKIA4Su.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BTwRVGbc.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Dk-ec10U.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Bt-XL6sZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CO0hHVso.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-B_1rC47Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cav6n7Mt.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BilWanrC.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Bs4awW3v.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-ByISUkN_.js">
+    <link rel="modulepreload" crossorigin href="./assets/apl-P0h8Mr-1.js">
+    <link rel="modulepreload" crossorigin href="./assets/asciiarmor-D32nrZfi.js">
+    <link rel="modulepreload" crossorigin href="./assets/asn1-BGWFqtof.js">
+    <link rel="modulepreload" crossorigin href="./assets/brainfuck-bRbTK_ul.js">
+    <link rel="modulepreload" crossorigin href="./assets/clike-CDpf5LdD.js">
+    <link rel="modulepreload" crossorigin href="./assets/clojure-BIaW7E1P.js">
+    <link rel="modulepreload" crossorigin href="./assets/cmake-Fdo8v8A2.js">
+    <link rel="modulepreload" crossorigin href="./assets/cobol-OYTcoAp0.js">
+    <link rel="modulepreload" crossorigin href="./assets/coffeescript-DnHAeBoz.js">
+    <link rel="modulepreload" crossorigin href="./assets/commonlisp-DZODvuDN.js">
+    <link rel="modulepreload" crossorigin href="./assets/crystal-ByGYU1ry.js">
+    <link rel="modulepreload" crossorigin href="./assets/css-DQy1ktIn.js">
+    <link rel="modulepreload" crossorigin href="./assets/cypher-BqzuHhct.js">
+    <link rel="modulepreload" crossorigin href="./assets/d-5Fj8y8Ro.js">
+    <link rel="modulepreload" crossorigin href="./assets/diff-K3UuOlLk.js">
+    <link rel="modulepreload" crossorigin href="./assets/dtd-COG0IeNI.js">
+    <link rel="modulepreload" crossorigin href="./assets/dylan-Dfhc0Kak.js">
+    <link rel="modulepreload" crossorigin href="./assets/ecl-BMslxTqn.js">
+    <link rel="modulepreload" crossorigin href="./assets/eiffel-DoFPZKgO.js">
+    <link rel="modulepreload" crossorigin href="./assets/elm-CWDHfGfn.js">
+    <link rel="modulepreload" crossorigin href="./assets/erlang-C0xdvudI.js">
+    <link rel="modulepreload" crossorigin href="./assets/simple-mode-Ccflbu9h.js">
+    <link rel="modulepreload" crossorigin href="./assets/factor-DEtwqCL8.js">
+    <link rel="modulepreload" crossorigin href="./assets/forth-A93hDrjr.js">
+    <link rel="modulepreload" crossorigin href="./assets/fortran-CuTjeCKb.js">
+    <link rel="modulepreload" crossorigin href="./assets/gas-CiyaCjl_.js">
+    <link rel="modulepreload" crossorigin href="./assets/gherkin-BcwByeby.js">
+    <link rel="modulepreload" crossorigin href="./assets/groovy-r2-fZFco.js">
+    <link rel="modulepreload" crossorigin href="./assets/haskell-7o_rdGTQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/haxe-DYRKW28o.js">
+    <link rel="modulepreload" crossorigin href="./assets/idl-lxzFEdlJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/javascript-BVerENn6.js">
+    <link rel="modulepreload" crossorigin href="./assets/julia-BKrwhn35.js">
+    <link rel="modulepreload" crossorigin href="./assets/livescript-DXZTF8eQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/lua-1kf1Kn_-.js">
+    <link rel="modulepreload" crossorigin href="./assets/mathematica-DbM7qeVx.js">
+    <link rel="modulepreload" crossorigin href="./assets/mbox-yeyE7jAy.js">
+    <link rel="modulepreload" crossorigin href="./assets/mirc-BUIfkQcx.js">
+    <link rel="modulepreload" crossorigin href="./assets/mllike-cuHPGaql.js">
+    <link rel="modulepreload" crossorigin href="./assets/modelica-DVVkMuX_.js">
+    <link rel="modulepreload" crossorigin href="./assets/mscgen-4Argcv2M.js">
+    <link rel="modulepreload" crossorigin href="./assets/mumps-BnAFQnrr.js">
+    <link rel="modulepreload" crossorigin href="./assets/nsis-BapZHEue.js">
+    <link rel="modulepreload" crossorigin href="./assets/ntriples-KcW691KM.js">
+    <link rel="modulepreload" crossorigin href="./assets/octave-aZeHY9oT.js">
+    <link rel="modulepreload" crossorigin href="./assets/oz-Cp3up0rm.js">
+    <link rel="modulepreload" crossorigin href="./assets/pascal-eBaSS2b_.js">
+    <link rel="modulepreload" crossorigin href="./assets/perl-DEhUvkqp.js">
+    <link rel="modulepreload" crossorigin href="./assets/pig-Bbx0-A3U.js">
+    <link rel="modulepreload" crossorigin href="./assets/powershell-C-a2xSWe.js">
+    <link rel="modulepreload" crossorigin href="./assets/properties-D4oZTSRw.js">
+    <link rel="modulepreload" crossorigin href="./assets/protobuf-vt_-BoIh.js">
+    <link rel="modulepreload" crossorigin href="./assets/pug-CuQCjsS0.js">
+    <link rel="modulepreload" crossorigin href="./assets/puppet-v_FxnHdD.js">
+    <link rel="modulepreload" crossorigin href="./assets/python-Ciz3nOoG.js">
+    <link rel="modulepreload" crossorigin href="./assets/q-BAMmJTXP.js">
+    <link rel="modulepreload" crossorigin href="./assets/r-BThezCV8.js">
+    <link rel="modulepreload" crossorigin href="./assets/rpm-DqZBhvGf.js">
+    <link rel="modulepreload" crossorigin href="./assets/ruby-COOWtg59.js">
+    <link rel="modulepreload" crossorigin href="./assets/sas-D7AOhztC.js">
+    <link rel="modulepreload" crossorigin href="./assets/scheme-CBocbbdR.js">
+    <link rel="modulepreload" crossorigin href="./assets/shell-lT1vcZaF.js">
+    <link rel="modulepreload" crossorigin href="./assets/sieve-Bp4wNuXd.js">
+    <link rel="modulepreload" crossorigin href="./assets/smalltalk-C8zenhWl.js">
+    <link rel="modulepreload" crossorigin href="./assets/sparql-Bfstq9Rh.js">
+    <link rel="modulepreload" crossorigin href="./assets/stylus-C2Em32WT.js">
+    <link rel="modulepreload" crossorigin href="./assets/swift-CQbdtQmS.js">
+    <link rel="modulepreload" crossorigin href="./assets/tcl-CgwjN-Du.js">
+    <link rel="modulepreload" crossorigin href="./assets/textile-CPuJdR_5.js">
+    <link rel="modulepreload" crossorigin href="./assets/toml-DLqKhfOq.js">
+    <link rel="modulepreload" crossorigin href="./assets/troff-BaD0cBMB.js">
+    <link rel="modulepreload" crossorigin href="./assets/ttcn-cfg-C9NOBlCe.js">
+    <link rel="modulepreload" crossorigin href="./assets/ttcn-DOB8C7GW.js">
+    <link rel="modulepreload" crossorigin href="./assets/turtle-_7wd09RB.js">
+    <link rel="modulepreload" crossorigin href="./assets/vb-E90VhI05.js">
+    <link rel="modulepreload" crossorigin href="./assets/vbscript-CtQr8UoL.js">
+    <link rel="modulepreload" crossorigin href="./assets/velocity-B4-NqC87.js">
+    <link rel="modulepreload" crossorigin href="./assets/verilog-CCpiILSH.js">
+    <link rel="modulepreload" crossorigin href="./assets/vhdl-CrGqTZyE.js">
+    <link rel="modulepreload" crossorigin href="./assets/webidl-Ct6MbsZC.js">
+    <link rel="modulepreload" crossorigin href="./assets/xquery-DNK7TlxO.js">
+    <link rel="modulepreload" crossorigin href="./assets/yacas-BK5XHzX2.js">
+    <link rel="modulepreload" crossorigin href="./assets/z80-DT8q_Ryr.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-hcUBDEjZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-dfl_7i8r.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-DDxkZACy.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-DI_RMnlv.js">
+    <link rel="modulepreload" crossorigin href="./assets/ConsoleOutput-1UUGbXpT.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-CVbUY4lM.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-CIREuKO3.js">
+    <link rel="modulepreload" crossorigin href="./assets/add-cell-with-ai-CSoCSUxd.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-Bji-_7ip.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-DNygr9WL.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-BZnptJuy.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-DCDc7NTf.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-DN61SPFU.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-BrByzpGu.js">
+    <link rel="modulepreload" crossorigin href="./assets/toggle-DAkPAKX9.js">
+    <link rel="modulepreload" crossorigin href="./assets/api-2JaIsahG.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-eSrTJiES.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-BCjx5a8M.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CSLSra8C.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-DN0TMY36.js">
+    <link rel="modulepreload" crossorigin href="./assets/_toKey-C5ccFCJm.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-BwKym8Ma.js">
+    <link rel="modulepreload" crossorigin href="./assets/utilities.esm-CFYsyNzv.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-Bk6kjZw5.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-CkynlJbW.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-CcDW_rEW.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-mq6FZbVx.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-video-camera-DxwR0TAX.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-text-DYJz3QFG.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-DdZ6Vgf6.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-CKActxHf.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-CzgZucd0.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-d-UPtQ6q.js">
+    <link rel="modulepreload" crossorigin href="./assets/circle-x-72ItD0Ur.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-BHxANXt5.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-DkyoQBeV.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-DhU-C-zB.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-fjEDxnj7.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-BskylHTJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-BKHo47jI.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-CMu624yo.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-DBTQaHSP.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-8ppFGRBY.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-BMRi-PYh.js">
+    <link rel="modulepreload" crossorigin href="./assets/VisuallyHidden-B6MGE2am.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFlatten-CnCoQev7.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-DaaGyK0L.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-Ddg4IE2d.js">
+    <link rel="modulepreload" crossorigin href="./assets/_basePickBy-CPlg9rol.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DON_s7R5.js">
+    <link rel="modulepreload" crossorigin href="./assets/send-BBhGiLCG.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-fIuLXB6s.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-CRVp7nwp.js">
+    <link rel="modulepreload" crossorigin href="./assets/globe-B7EKeryr.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-DHav_aX8.js">
+    <link rel="modulepreload" crossorigin href="./assets/settings-DCyJEp5F.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-2ncKmcyv.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-CITCjWDo.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-x0pnLWWY.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-CBRGmh5t.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-wU8qigWB.css">
+    <link rel="stylesheet" crossorigin href="./assets/Output-DUep6sC9.css">
+    <link rel="stylesheet" crossorigin href="./assets/ConsoleOutput-BFFTcC5Y.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-7bO8TuDm.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    <marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.18.3%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20In%20the%20Heat%20of%20the%20Moment%3A%20The%20Acute%20Physiology%20of%20Cycling%20in%20a%20Heatwave%0A%20%20%20%20In%20Part%201%2C%20we%20broke%20down%20the%20physics%20of%20cycling%20in%20the%20heat%20using%20the%20Power%20Balance%20Equation.%20We%20saw%20that%20when%20the%20body%20cannot%20dissipate%20internal%20heat%20fast%20enough%2C%20it%20accumulates%2C%20driving%20up%20core%20body%20temperature.%20Now%20we'll%20explore%20the%20acute%20physiological%20responses%20to%20heat%20stress.%3Cbr%3E%0A%20%20%20%20When%20you%20ride%20in%20temperatures%20that%20are%20significantly%20higher%20than%20you%20are%20used%20to%2C%20your%20body%20triggers%20a%20cascade%20of%20acute%20physiological%20emergencies.%20To%20keep%20your%20core%20temperature%20from%20reaching%20dangerous%20levels%20(%24%3E40.5%5E%5Ccirc%5Ctext%7BC%7D%24)%2C%20your%20autonomic%20nervous%20system%20executes%20a%20sharp%20reallocation%20of%20internal%20resources.%20%3Cbr%3EUnderstanding%20this%20acute%20response%20reveals%20why%20your%20heart%20rate%20drifts%20higher%2C%20your%20legs%20feel%20empty%20and%20your%20functional%20threshold%20power%20(FTP)%20melts%20away%20on%20a%20hot%20day.%20This%20highlights%20the%20importance%20of%20adequate%20hydration%20and%20replacement%20of%20electrolytes.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20import%20plotly.graph_objects%20as%20go%0A%20%20%20%20from%20plotly.subplots%20import%20make_subplots%0A%20%20%20%20import%20math%0A%20%20%20%20return%20go%2C%20make_subplots%2C%20math%2C%20mo%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(%22%22%22%0A%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%2F*%20Responsive%20layout%20tweaks%20for%20small%20screens%20*%2F.mo-hstack%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20flex-direction%3A%20column%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20gap%3A%2016px%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.mo-vstack%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.mobile-container%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20padding%3A%200%2012px%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-sizing%3A%20border-box%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.mobile-container%20.mo-vstack%2C%0A%20%20%20%20%20%20%20%20.mobile-container%20.mo-hstack%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.mobile-container%20input%5Btype%3D%22range%22%5D%2C%0A%20%20%20%20%20%20%20%20.mobile-container%20input%5Btype%3D%22number%22%5D%2C%0A%20%20%20%20%20%20%20%20.mobile-container%20select%2C%0A%20%20%20%20%20%20%20%20.mobile-container%20.mo-slider%2C%0A%20%20%20%20%20%20%20%20.mobile-container%20.mo-switch%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20100%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20max-width%3A%20100%25%20!important%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20box-sizing%3A%20border-box%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20.mobile-container%20label%2C%20.mobile-container%20.mo-label%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20white-space%3A%20normal%20!important%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20img%2C%20.plotly-graph-div%20%7B%0A%20%20%20%20%20%20%20%20max-width%3A%20100%25%20!important%3B%0A%20%20%20%20%20%20%20%20height%3A%20auto%20!important%3B%0A%20%20%20%20%7D%0A%20%20%20%20%3C%2Fstyle%3E%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20def%20ui_sliders(mo)%3A%0A%20%20%20%20%20%20%20%20weight%20%3D%20mo.ui.slider(start%3D45%2C%20stop%3D100%2C%20step%3D1%2C%20value%3D70%2C%20label%3D%22Weight%20(kg)%22)%0A%20%20%20%20%20%20%20%20height%20%3D%20mo.ui.slider(start%3D1.50%2C%20stop%3D2.00%2C%20step%3D0.01%2C%20value%3D1.78%2C%20label%3D%22Height%20(m)%22)%0A%20%20%20%20%20%20%20%20power%20%3D%20mo.ui.slider(start%3D0%2C%20stop%3D500%2C%20step%3D10%2C%20value%3D300%2C%20label%3D%22Mechanical%20Power%20(W)%22)%0A%20%20%20%20%20%20%20%20speed%20%3D%20mo.ui.slider(start%3D0%2C%20stop%3D60%2C%20step%3D1%2C%20value%3D35%2C%20label%3D%22Air%20Speed%20(km%2Fh)%22)%0A%20%20%20%20%20%20%20%20temp%20%3D%20mo.ui.slider(start%3D25%2C%20stop%3D45%2C%20step%3D1%2C%20value%3D38%2C%20label%3D%22Ambient%20Temp%20(%C2%B0C)%22)%0A%20%20%20%20%20%20%20%20humidity%20%3D%20mo.ui.slider(start%3D10%2C%20stop%3D100%2C%20step%3D5%2C%20value%3D55%2C%20label%3D%22Rel.%20Humidity%20(%25)%22)%0A%20%20%20%20%20%20%20%20hydration%20%3D%20mo.ui.slider(start%3D0.0%2C%20stop%3D1.2%2C%20step%3D0.1%2C%20value%3D1.0%2C%20label%3D%22Hydration%20Rate%20(L%2Fhr)%22)%0A%20%20%20%20%20%20%20%20sunny%20%3D%20mo.ui.switch(label%3D%22Direct%20sunlight%22%2C%20value%3DTrue)%0A%20%20%20%20%20%20%20%20return%20height%2C%20weight%2C%20power%2C%20speed%2C%20temp%2C%20humidity%2C%20sunny%2C%20hydration%0A%0A%0A%20%20%20%20height%2C%20weight%2C%20power%2C%20speed%2C%20temp%2C%20humidity%2C%20sunny%2C%20hydration%20%3D%20ui_sliders(mo)%0A%20%20%20%20return%20height%2C%20humidity%2C%20hydration%2C%20power%2C%20speed%2C%20sunny%2C%20temp%2C%20weight%0A%0A%0A%40app.cell%0Adef%20_(math)%3A%0A%20%20%20%20def%20physics_engine(height%2C%20humidity%2C%20power%2C%20speed%2C%20temp%2C%20weight%2C%20sunny%2C%20hydration%2C%20power_penalty%3D0%2C%20sweat_threshold_penalty%3D0)%3A%0A%20%20%20%20%20%20%20%20%23%201.%20Base%20Thermodynamic%20Constants%20from%20Part%201%0A%20%20%20%20%20%20%20%20eta%20%3D%200.22%20%23%20Gross%20mechanical%20efficiency%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20T_s%20%3D%2034.0%20%23%20Skin%20temperature%20approx%20(%C2%B0C)%5Bcite%3A%201%5D%0A%0A%20%20%20%20%20%20%20%20m%20%3D%20weight.value%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20h%20%3D%20height.value%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20P_mech%20%3D%20power.value%20*%20(1-power_penalty)%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20v_ms%20%3D%20speed.value%20%2F%203.6%20%23%20km%2Fh%20to%20m%2Fs%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20T_a%20%3D%20temp.value%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20RH%20%3D%20humidity.value%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20intake_L_hr%20%3D%20hydration.value%0A%0A%20%20%20%20%20%20%20%20%23%202.%20Body%20Surface%20Area%20(Du%20Bois%20formula)%0A%20%20%20%20%20%20%20%20BSA%20%3D%200.20247%20*%20(m%20**%200.425)%20*%20(h%20**%200.725)%20%23%5Bcite%3A%201%5D%0A%0A%20%20%20%20%20%20%20%20%23%203.%20Internal%20Heat%20Generation%20(Watts)%0A%20%20%20%20%20%20%20%20P_heat%20%3D%20P_mech%20*%20((1%20-%20eta)%20%2F%20eta)%20%23%5Bcite%3A%201%5D%0A%0A%20%20%20%20%20%20%20%20%23%204.%20Convective%20Cooling%0A%20%20%20%20%20%20%20%20h_c%20%3D%205.8%20*%20(v_ms%20**%200.8)%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20P_conv%20%3D%20h_c%20*%20BSA%20*%20(T_s%20-%20T_a)%20%23%5Bcite%3A%201%5D%0A%0A%20%20%20%20%20%20%20%20%23%205.%20Radiative%20Cooling%0A%20%20%20%20%20%20%20%20h_r%20%3D%206.0%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20T_sun%20%3D%2030%20*%20sunny.value%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20P_rad%20%3D%20h_r%20*%20BSA%20*%200.72%20*%20(T_s%20-%20(T_a%20%2B%20T_sun))%20%23%5Bcite%3A%201%5D%0A%0A%20%20%20%20%20%20%20%20%23%206.%20Evaporative%20Cooling%0A%20%20%20%20%20%20%20%20def%20P_sat(T)%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%200.61078%20*%20math.exp((17.27%20*%20T)%20%2F%20(T%20%2B%20237.3))%0A%0A%20%20%20%20%20%20%20%20P_sk_s%20%3D%20P_sat(T_s)%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20P_a%20%3D%20(RH%20%2F%20100)%20*%20P_sat(T_a)%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20h_e%20%3D%2016.5%20*%20h_c%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20P_evap_max%20%3D%20h_e%20*%20BSA%20*%20max(0%2C%20P_sk_s%20%2B%20sweat_threshold_penalty%20-%20P_a)%20%23%5Bcite%3A%201%5D%0A%0A%20%20%20%20%20%20%20%20P_evap_req%20%3D%20max(0%2C%20P_heat%20-%20P_conv%20-%20P_rad)%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20P_evap%20%3D%20min(P_evap_req%2C%20P_evap_max)%20%23%5Bcite%3A%201%5D%0A%0A%20%20%20%20%20%20%20%20%23%207.%20Net%20Heat%20Storage%20%26%20Base%20Core%20Temp%20Drift%0A%20%20%20%20%20%20%20%20P_storage%20%3D%20P_heat%20-%20P_conv%20-%20P_rad%20-%20P_evap%20%23%5Bcite%3A%201%5D%0A%20%20%20%20%20%20%20%20dTc_dt%20%3D%20(P_storage%20*%203600)%20%2F%20(m%20*%203490)%20%23%20%C2%B0C%20%2F%20hr%5Bcite%3A%201%5D%0A%0A%20%20%20%20%20%20%20%20%23%208.%20Time-Series%20Projections%20(0%20to%204%20hours%20in%202-minute%20increments)%0A%20%20%20%20%20%20%20%20%23%20Latent%20heat%20of%20vaporization%20for%20sweat%20%E2%89%88%202%2C430%2C000%20J%2FL%0A%20%20%20%20%20%20%20%20sweat_rate_L_hr%20%3D%20(P_evap%20*%203600)%20%2F%202430000%20%0A%20%20%20%20%20%20%20%20return%20dTc_dt%2C%20sweat_rate_L_hr%2C%20intake_L_hr%2C%20P_evap%2C%20P_evap_max%0A%0A%20%20%20%20def%20simulate(height%2C%20humidity%2C%20power%2C%20speed%2C%20temp%2C%20weight%2C%20sunny%2C%20hydration)%3A%20%20%20%20%0A%20%20%20%20%20%20%20%20time_hours%20%3D%20%5Bi%20*%20(4%20%2F%20240)%20for%20i%20in%20range(241)%5D%0A%20%20%20%20%20%20%20%20Tc_array%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20fluid_loss_array%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20cv_drift_array%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20power_delivered_array%20%3D%20%5B%5D%0A%20%20%20%20%20%20%20%20Tc%20%3D%2037.4%0A%20%20%20%20%20%20%20%20central_governor_stop%20%3D%20%22%22%0A%20%20%20%20%20%20%20%20sweat_threshold_penalty%20%3D%200%0A%20%20%20%20%20%20%20%20for%20t%20in%20time_hours%3A%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Power%20Penalty%20(2.5%25%20power%20loss%20per%201%C2%B0C%20increase%20above%2037.4%C2%B0C)%0A%20%20%20%20%20%20%20%20%20%20%20%20power_penalty%20%3D%20max(0%2C%20(Tc%20-%2037.4)%20*%202.5)%20%2F%20100%0A%20%20%20%20%20%20%20%20%20%20%20%20power_delivered%20%3D%20power.value%20*%20(1%20-%20power_penalty)%0A%20%20%20%20%20%20%20%20%20%20%20%20power_delivered_array.append(power_delivered)%20%20%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20dTc_dt%2C%20sweat_rate_L_hr%2C%20intake_L_hr%2C%20P_evap%2C%20P_evap_max%20%3D%20physics_engine(height%2C%20humidity%2C%20power%2C%20speed%2C%20temp%2C%20weight%2C%20sunny%2C%20hydration%2C%20power_penalty%2C%20sweat_threshold_penalty)%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Core%20Temp%20Progression%2C%20max%20set%20at%2040.5%2C%20dt%20%3D%204%20%2F%20240%20%3D%201%20minute%0A%20%20%20%20%20%20%20%20%20%20%20%20Tc%20%3D%20min(Tc%20%2B%20(dTc_dt%20*%204%20%2F%20240)%2C%2040.5)%0A%20%20%20%20%20%20%20%20%20%20%20%20Tc_array.append(Tc)%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Net%20Fluid%20Loss%20(Evaporated%20sweat%20-%20Intake)%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Assuming%20wasted%20sweat%20(un-evaporated)%20is%20minimal%20for%20mathematical%20simplicity%20here%0A%20%20%20%20%20%20%20%20%20%20%20%20net_loss%20%3D%20min(0%2C%20-(sweat_rate_L_hr%20-%20intake_L_hr)%20*%20t)%0A%20%20%20%20%20%20%20%20%20%20%20%20fluid_loss_array.append(net_loss)%0A%20%20%20%20%20%20%20%20%20%20%20%20sweat_threshold_penalty%20%3D%20(net_loss%20%2F%20weight.value%20*%20100)%20*%200.06%20%23%20Mountain%2C%20Laztka%2C%20Sawka%201995%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Cardiovascular%20Drift%20(~9%20bpm%20penalty%20per%201%C2%B0C%20increase%20above%2037.4%C2%B0C)%0A%20%20%20%20%20%20%20%20%20%20%20%20cv_drift%20%3D%20max(0%2C%20(Tc%20-%2037.4)%20*%209)%0A%20%20%20%20%20%20%20%20%20%20%20%20cv_drift_array.append(cv_drift)%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20Tc%20%3D%3D40.5%3A%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20central_governor_stop%20%3D%20f%22Forced%20to%20stop%20after%20%7Bint(t)%7D%20hours%20%7B(t-int(t))*60%3A.0f%7D%20minutes%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20break%0A%0A%20%20%20%20%20%20%20%20return%20time_hours%2C%20Tc_array%2C%20fluid_loss_array%2C%20cv_drift_array%2C%20power_delivered_array%2C%20sweat_rate_L_hr%2C%20P_evap%2C%20P_evap_max%2Ccentral_governor_stop%20%0A%20%20%20%20return%20(simulate%2C)%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20go%2C%0A%20%20%20%20height%2C%0A%20%20%20%20humidity%2C%0A%20%20%20%20hydration%2C%0A%20%20%20%20make_subplots%2C%0A%20%20%20%20power%2C%0A%20%20%20%20simulate%2C%0A%20%20%20%20speed%2C%0A%20%20%20%20sunny%2C%0A%20%20%20%20temp%2C%0A%20%20%20%20weight%2C%0A)%3A%0A%20%20%20%20time_hours%2C%20Tc_array%2C%20fluid_loss_array%2C%20cv_drift_array%2C%20power_delivered_array%2C%20sweat_rate_L_hr%2C%20P_evap%2C%20P_evap_max%2C%20central_governor_stop%20%20%3D%20simulate(height%2C%20humidity%2C%20power%2C%20speed%2C%20temp%2C%20weight%2C%20sunny%2C%20hydration)%0A%0A%20%20%20%20%23%204-Tier%20Subplot%20for%20time-series%20cascading%20failure%0A%20%20%20%20fig%20%3D%20make_subplots(%0A%20%20%20%20%20%20%20%20rows%3D4%2C%20cols%3D1%2C%20%0A%20%20%20%20%20%20%20%20shared_xaxes%3DTrue%2C%0A%20%20%20%20%20%20%20%20vertical_spacing%3D0.08%2C%0A%20%20%20%20%20%20%20%20subplot_titles%3D(%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Core%20Body%20Temperature%20(%C2%B0C)%22%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Net%20Fluid%20Loss%20(Liters)%22%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Cardiovascular%20Drift%20(bpm%20penalty)%22%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Power%20Delivered%22%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Trace%201%3A%20Core%20Temperature%0A%20%20%20%20fig.add_trace(go.Scatter(x%3Dtime_hours%2C%20y%3DTc_array%2C%20line%3Ddict(color%3D'%23ef4444'%2C%20width%3D3)%2C%20name%3D%22Core%20Temp%22)%2C%20row%3D1%2C%20col%3D1)%0A%20%20%20%20fig.add_hline(y%3D39.5%2C%20line_dash%3D%22dash%22%2C%20line_color%3D%22black%22%2C%20annotation_text%3D%22Critical%20Strain%20Boundary%20(39.5%C2%B0C)%22%2C%20row%3D1%2C%20col%3D1)%0A%20%20%20%20fig.add_hline(y%3D40.5%2C%20line_dash%3D%22dash%22%2C%20line_color%3D%22red%22%2C%20annotation_text%3D%22Heatstroke%20-%20Central%20Governor%20stops%20activity%20(40.5%C2%B0C)%22%2C%20row%3D1%2C%20col%3D1)%0A%0A%20%20%20%20%23%20Trace%202%3A%20Net%20Fluid%20Loss%0A%20%20%20%20fig.add_trace(go.Scatter(x%3Dtime_hours%2C%20y%3Dfluid_loss_array%2C%20line%3Ddict(color%3D'red'%2C%20width%3D3)%2C%20name%3D%22Fluid%20Loss%22%2C%20fill%3D'tozeroy')%2C%20row%3D2%2C%20col%3D1)%0A%0A%20%20%20%20%23%20Trace%203%3A%20Cardiovascular%20Drift%0A%20%20%20%20fig.add_trace(go.Scatter(x%3Dtime_hours%2C%20y%3Dcv_drift_array%2C%20line%3Ddict(color%3D'%23f59e0b'%2C%20width%3D3)%2C%20name%3D%22CV%20Drift%22)%2C%20row%3D3%2C%20col%3D1)%0A%0A%20%20%20%20%23%20Trace%204%3A%20Power%20Delivered%20declines%20as%20core%20body%20temperature%20rises%0A%20%20%20%20fig.add_trace(go.Scatter(x%3Dtime_hours%2C%20y%3Dpower_delivered_array%2C%20line%3Ddict(color%3D'%238b5cf6'%2C%20width%3D3)%2C%20name%3D%22Power%20Delivered%22%2C%20fill%3D'tozeroy')%2C%20row%3D4%2C%20col%3D1)%0A%0A%20%20%20%20fig.update_layout(%0A%20%20%20%20%20%20%20%20height%3D850%2C%20%0A%20%20%20%20%20%20%20%20title%3Df%22%3Cb%3ESimulation%3A%20%7Bpower.value%7DW%20in%20%7Btemp.value%7D%C2%B0C%2F%7Bhumidity.value%7D%25%20humidity%20for%204%20Hours%20%7Bcentral_governor_stop%7D%3C%2Fb%3E%3Cbr%3E%3Cspan%20style%3D'font-size%3A%2014px%3B%20color%3A%20gray%3B'%3ESweat%20Rate%3A%20%7Bsweat_rate_L_hr%3A.2f%7D%20L%2Fhr%20%7C%20Hydration%20Intake%3A%20%7Bhydration.value%3A.2f%7D%20L%2Fhr%3C%2Fspan%3E%22%2C%0A%20%20%20%20%20%20%20%20showlegend%3DFalse%2C%0A%20%20%20%20%20%20%20%20margin%3Ddict(t%3D80%2C%20b%3D40%2C%20l%3D60%2C%20r%3D40)%2C%0A%20%20%20%20%20%20%20%20hovermode%3D%22x%20unified%22%2C%0A%20%20%20%20%20%20%20%20template%3D%22plotly_white%22%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Adaptive%20y-axes%20scaling%0A%20%20%20%20fig.update_yaxes(range%3D%5B36.5%2C%20max(42%2C%20max(Tc_array)%20%2B%200.5)%5D%2C%20row%3D1%2C%20col%3D1)%0A%20%20%20%20fig.update_yaxes(range%3D%5Bmin(-8.0%2C%20min(fluid_loss_array))%2C%200%5D%2C%20row%3D2%2C%20col%3D1)%0A%20%20%20%20fig.update_yaxes(range%3D%5B0%2C%20max(40%2C%20max(cv_drift_array)%20%2B%205)%5D%2C%20row%3D3%2C%20col%3D1)%0A%20%20%20%20fig.update_yaxes(range%3D%5Bmin(power_delivered_array)-10%2C%20max(power_delivered_array)%20%2B%2010%5D%2C%20row%3D4%2C%20col%3D1)%0A%0A%20%20%20%20fig.update_xaxes(title_text%3D%22Time%20(hours)%22%2C%20row%3D4%2C%20col%3D1)%0A%20%20%20%20return%20P_evap%2C%20P_evap_max%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20P_evap%2C%0A%20%20%20%20P_evap_max%2C%0A%20%20%20%20height%2C%0A%20%20%20%20humidity%2C%0A%20%20%20%20hydration%2C%0A%20%20%20%20mo%2C%0A%20%20%20%20power%2C%0A%20%20%20%20speed%2C%0A%20%20%20%20sunny%2C%0A%20%20%20%20temp%2C%0A%20%20%20%20weight%2C%0A)%3A%0A%20%20%20%20%23%20Provide%20visual%20feedback%20on%20sweating%20efficiency%0A%20%20%20%20sweat_status%20%3D%20%22%22%0A%20%20%20%20if%20P_evap%20%3E%3D%20P_evap_max%20and%20P_evap_max%20%3E%200%3A%0A%20%20%20%20%20%20%20%20sweat_status%20%3D%20%22%E2%9A%A0%EF%B8%8F%20**Warning%3A**%20Evaporation%20is%20maxed%20out.%20Excess%20sweat%20will%20drip%20off%20and%20waste%20fluid%20without%20cooling.%22%0A%0A%20%20%20%20controls%20%3D%20mo.md(%22%3Cdiv%20class%3D'mobile-container'%3E%22)%0A%20%20%20%20controls%20%3D%20mo.hstack(%0A%20%20%20%20%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20mo.vstack(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%9A%B4%20Cycling%20%26%20Hydration%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20power%2C%20speed%2C%20weight%2C%20height%2C%20hydration%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20mo.vstack(%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20%F0%9F%8C%A4%EF%B8%8F%20Environment%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20sunny%2C%20temp%2C%20humidity%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20mo.md(sweat_status)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20)%2C%0A%20%20%20%20%20%20%20%20%5D%2C%0A%20%20%20%20%20%20%20%20gap%3D1%2C%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Render%20final%20view%0A%20%20%20%20controls%0A%20%20%20%20%23mo.vstack(%5Bcontrols%2C%20mo.ui.plotly(fig)%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20A%20Battle%20for%20Resources%3A%20Redirection%20of%20Blood%20Circulation%0A%20%20%20%20When%20you%20are%20at%20rest%20in%20thermonuetral%20conditions%2C%20your%20heart%20pumps%20blood%20around%20the%20body%20at%20about%205%20L%2Fmin.%20Only%205-10%25%20of%20this%20flows%20to%20the%20skin.%20Under%20intense%20exercise%2C%20cardiac%20output%20can%20scale%20up%20significantly%20to%2020-30%20L%2Fmin%2C%20as%20both%20the%20heart%20rate%20and%20the%20stoke%20volume%20blood%20increase.%20About%2080-85%25%20of%20bloodflow%20is%20directed%20to%20skeletal%20muscle.%3Cbr%3E%0A%20%20%20%20As%20we%20saw%20in%20Part%201%2C%20increase%20muscle%20activity%20generates%20internal%20heat%20which%20becomes%20more%20difficult%20to%20dissipate%20through%20the%20skin%20when%20the%20ambient%20temperature%20is%20high.%20Changes%20in%20core%20body%20temperatures%20are%20detected%20in%20part%20of%20the%20brain%20called%20the%20%3Ca%20href%3D%22https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHypothalamus%22%3Ehypothalamus%3C%2Fa%3E.%20Increased%20body%20heat%20triggers%20a%20widening%20of%20the%20capillary%20network%20of%20blood%20vessels%20(vasodilation)%20near%20the%20skin%20surface%20where%20cooling%20takes%20place.%20Blood%20flow%20to%20the%20skin%20can%20rise%20from%200.5%20L%2Fmin%20to%207%20or%208%20L%2Fmin.%3Cbr%3E%0A%20%20%20%20Since%20you%20only%20have%20a%20fixed%20amount%20of%20blood%2C%20this%20creates%20a%20competitive%20demand%20for%20blood%20that%20also%20needs%20to%20flow%20to%20the%20muscles%20to%20keep%20them%20working.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Cardiovascular%20Drift%0A%20%20%20%20As%20the%20skin's%20vast%20network%20of%20flexible%20blood%20vessels%20absorbs%20additional%20blood%20flow%2C%20the%20amount%20of%20blood%20returning%20to%20the%20right%20atrium%20of%20the%20heart%20(venous%20return)%20decreases.%20This%20causes%20the%20amount%20of%20blood%20pumped%20out%20the%20heart%20(stroke%20volume)%20to%20fall.%20In%20order%20to%20maintain%20cardiac%20output%2C%20the%20heart%20must%20beat%20faster.%20Steadily%20rising%20heart%20rate%20is%20know%20as%20cardiovascular%20drift.%3Cbr%3E%0A%20%20%20%20%3Ca%20href%3D%22https%3A%2F%2Fphysoc.onlinelibrary.wiley.com%2Fdoi%2Fepdf%2F10.1113%2Fexpphysiol.2010.054213%22%3EStudies%3C%2Fa%3E%20have%20confirmed%20that%20during%20acute%20heat%20exposure%2C%20heart%20rate%20tends%20to%20drift%20upwards%20by%208%20to%2010%20bpm%20for%20every%20%241%5E%5Ccirc%5Ctext%7BC%7D%24%20increase%20in%20core%20body%20temperature%2C%20even%20when%20power%20output%20remains%20completely%20flat.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Losing%20Power%0A%20%20%20%20The%20partial%20redirection%20of%20blood%20flow%20to%20the%20skin%20means%20the%20muscles%20receive%20less%20oxygenated%20blood.%20Since%20aerobic%20power%20is%20dependent%20on%20the%20delivery%20of%20oxygen%20to%20the%20muscle%2C%20the%20rate%20of%20oxygen%20use%2C%20%24V%26%23775%3BO_2%24%2C%20falls%20a%20core%20body%20temperature%20rises.%20This%20affects%20your%20%24V%26%23775%3BO_2%5Ctext%7Bmax%7D%24%20and%20your%20Functional%20Theshold%20Power%20(FTP).%20Experiments%20show%20a%20%241.5%5Ctext%7B--%7D3.0%5C%25%24%20loss%20per%20%241.0%5E%5Ccirc%5Ctext%7BC%7D%24%20rise%20in%20core%20body%20temperature%20above%20baseline.%3Cbr%3E%0A%20%20%20%20Suppose%20you%20have%20an%20FTP%20of%20300%20W%2C%20but%20you%20are%20riding%20in%20heatweave%20conditions.%20If%20your%20core%20body%20temperature%20rises%20by%20%242%5E%5Ccirc%5Ctext%7BC%7D%24%2C%20your%20effective%20FTP%20might%20fall%20to%20280%20W.%20Continuing%20to%20push%20at%20300%20W%2C%20would%20represent%20an%20above-threshold%20effort.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Perspiration%20and%20Hydration%0A%20%20%20%20In%20Part%201%2C%20we%20noted%20the%20important%20cooling%20effect%20of%20the%20evaporation%20of%20sweat.%20Eccrine%20sweat%20glands%2C%20distributed%20across%20nearly%20all%20skin%20surfaces%2C%20produce%20sweat%20by%20filtering%20fluid%20from%20the%20interstitial%20space%2C%20which%20is%20continuously%20supplied%20by%20blood%20plasma%20flowing%20through%20surrounding%20dermal%20capillaries.%3Cbr%3E%0A%20%20%20%20The%20evaporation%20of%20a%20litre%20of%20sweat%20over%20an%20hour%20removes%202%2C426%20kJ%20at%20a%20rate%20of%20674%20W.%20This%20is%20what%20an%20average%20rider%20would%20lose%20when%20pushing%20200%20W%20at%2030%20km%2Fh%20on%20a%20%2430%5E%5Ccirc%5Ctext%7BC%7D%24%20sunny%20day.%20Professional%20cyclists%20can%20lose%201.5%20to%202.5%20L%2Fh.%20%3Cbr%3E%0A%20%20%20%20As%20the%20blood%20plasma%20becomes%20more%20concentrated%2C%20it%20draws%20water%20by%20osmosis%20from%20within%20and%20around%20the%20cells%20of%20the%20body%2C%20helping%20to%20conserve%20blood%20volume.%20Nevertheless%20circulatory%20blood%20decreases%20by%20100-200%20mL%20for%20each%20litre%20of%20sweat%2C%20making%20it%20more%20viscous.%20This%20creates%20a%20further%20reduction%20in%20venous%20return%2C%20thereby%20reducing%20stroke%20volume%2C%20requiring%20an%20additional%20compensatory%20increase%20in%20heart%20rate%20(cardiac%20drift).%3Cbr%3E%0A%20%20%20%20On%20order%20to%20conserve%20body%20fluid%2C%20the%20sweat%20response%20becomes%20less%20sensitive%20to%20temperature%20and%20the%20%3Ca%20href%3D%22https%3A%2F%2Fwww.researchgate.net%2Fpublication%2F14606549_Montain_SJ_Latzka_WA_Sawka_MN_Control_of_thermoregulatory_sweating_is_altered_by_hydration_level_and_exercise_intensity_J_Appl_Physiol1995_79_1434-1439%22%3Ethreshold%20skin%20temperature%20rises%3C%2Fa%3E%20by%20%240.06%5E%5Ccirc%5Ctext%7BC%7D%24%20for%20every%201%25%20of%20body%20mass%20fluid%20loss.%3Cbr%3E%0A%20%20%20%20This%20is%20why%20it%20is%20so%20important%20to%20maintain%20hydration%20when%20riding%20in%20hot%20conditions.%20Unfprtunately%2C%20this%20is%20not%20so%20easy%20because%20your%20body%20can%20sweat%20much%20faster%20than%20your%20gut%20can%20absorb%20fluid.%20In%20normal%20conditions%20maximum%20gut%20absorbtion%20is%200.8%20to%201.2%20L%2Fh%2C%20but%20this%20can%20fall%20to%200.5%20to%200.7%20L%2Fh%20(one%20bottle%20per%20hour)%20under%20intense%20exercise%20in%20hot%20conditions.%20If%20you%20drink%20more%2C%20it%20just%20sloshes%20around%20in%20your%20stomach.%20This%20unavoidable%20fluid%20deficit%20leads%20to%20dehydration%2C%20which%20in%20turn%20inhibits%20the%20production%20of%20sweat%20for%20evaporative%20cooling.%20For%20example%2C%20the%20threshold%20for%20sweat%20production%20is%20elevated.%20The%20net%20result%20is%20that%20core%20body%20temperature%20rises%20further.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Sodium%20Loss%20and%20Hyponatremia%0A%20%20%20%20The%20concetration%20(osmotic%20balance)%20of%20sodium%20ions%20%24Na%5E%2B%24%20in%20the%20blood%20is%20maintained%20in%20a%20relatively%20narrow%20band%20of%20135%20to%20145%20mmol%2FL.%20Sweat%20contains%20a%20range%20of%20electrolytes%2C%20primarily%20%24Na%5E%2B%24%20and%20%24Cl%5E-%24%2C%20at%20relatively%20dilute%20concentrations.%20In%20an%20unacclimatised%20athlete%2C%20sodium%20levels%20are%2040%20to%2060%20mmol%2FL%20(we%20shall%20see%20in%20Part%203%20that%20acclimatised%20athlete%20lose%20less%20sodium).%20Sweating%20causes%20a%20reduction%20of%20sodium%20and%20water%20from%20the%20blood%20plasma.%20%3Cbr%3E%0A%20%20%20%20This%20creates%20a%20risk%20if%20you%20rehydrate%20with%20pure%20water.%20Hyponatremia%20(low%20sodium)%20occur%20when%20blood%20concentration%20falls%20below%20135%20mmol%2FL.%20This%20causes%20nausa%2C%20confusion%2C%20swelling%20of%20cells%20and%20a%20signficant%20fall%20in%20endurance%20performance.%3Cbr%3E%0A%20%20%20%20The%20key%20message%20is%20to%20rehydrate%20during%20your%20ride%20using%20electrolytes.%20For%20rides%20over%202%20hours%20in%20hot%20weather%2C%20take%20one%20750ml%20bottle%20of%20energy%20drink%20and%20a%20second%20750ml%20bottle%20of%20water%20with%20electrolyte.%20For%20longer%20riders%2C%20take%20extra%20supplies%20to%20add%20to%20your%20bottles%20when%20you%20refill%20with%20water%20along%20the%20way.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Central%20Governor%0A%20%20%20%20Why%20can't%20you%20just%20push%20through%20the%20dehydration%20and%20discomfort%20and%20carry%20on%20pumping%20out%20the%20power%20in%20high%20termperature%20conditions%3F%3Cbr%3E%0A%20%20%20%20In%20a%20%3Ca%20href%3D%22https%3A%2F%2Fwww.paulogentil.com%2Fpdf%2FChallenging%2520beliefs%2520-%2520ex%2520Africa%2520semper%2520aliquid%2520novi.pdf%22%3Eground-breaking%20paper%3C%2Fa%3E%20in%201997%2C%20sports%20scientist%20Professor%20Tim%20Noakes%20proposed%20what%20is%20known%20as%20The%20Central%20Governor%20Model.%20In%20order%20to%20prevent%20organ%20and%20tissue%20damage%2C%20the%20brain%20stimulates%20a%20sense%20of%20fatigue%2C%20designed%20to%20down-regulate%20the%20recruitment%20of%20motor%20units.%20This%20produces%20a%20spike%20in%20the%20Rate%20of%20Perceived%20Exertion.%20Overheating%20is%20detected%20in%20the%20hypothalamus.%20This%20triggers%20changes%20in%20neuro-chemical%20pathways%20that%20limit%20the%20transimission%20of%20signals%20to%20the%20muscles.%20You%20have%20to%20stop.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      window.__MARIMO_MOUNT_CONFIG__ = {
+            "filename": "notebook.py",
+            "mode": "read",
+            "version": "0.18.3",
+            "serverToken": "unused",
+            "config": {"ai": {"models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "copilot": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": false, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "uv"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "medium"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        };
+    </script>
+  </body>
+</html>
