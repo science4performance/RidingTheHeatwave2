@@ -491,7 +491,7 @@ def _(mo):
 def _(mo):
     mo.md(r"""
     # Technical Appendix
-    The model is based on the physics engine developed in Part 1, with the addition of a rate of hydration. The simulation assumes constant ambient conditions and constant speed for a four hour ride. Calculations are performed at one minute intervals. The focus is on the point where heat can no longer be dissapated fast enough and core body temperature $T_c$ starts to rise.
+    The model is based on the physics engine developed in Part 1, with the addition of a rate of hydration. Although I have done my best to ensure the science is correct, the model has limitations. It is designed to provide an intuition into the factors that affect cycling performance in hot conditions.The simulation assumes constant ambient conditions and constant speed for a four hour ride. Calculations are performed at one minute intervals. The focus is on the point where heat can no longer be dissapated fast enough and core body temperature $T_c$ starts to rise.
     ## Sweat rate
     Latent heat of vaporization for sweat ≈ 2,430,000 J/L. To derive sweat rate from rate of heat lost from evaporation $P_{evap}$<br>
     Sweat_Rate_L_hr = ($P_{evap}$ * 3600) / 2430000
